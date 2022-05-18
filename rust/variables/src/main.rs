@@ -1,4 +1,4 @@
-use std::any::Any;
+use std::io;
 
 fn main() {
     let mut x = 5;
@@ -32,4 +32,35 @@ fn main() {
     let six_point_four = t.1;
 
     let one = t.2;
+
+    //array -> more usefull if you want your data to be stored on the stack instead of the heap
+    // elements inside array all off the same type
+    // fixed size -> if you want your data to grow or shrink -> use vectore
+
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    // initialize array -> 3 is the value of the array , 5 is the size
+    // let a = [3, 3, 3, 3, 3]; :w
+    let a = [3; 5];
+
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!(
+        "The value of the element at index {} is: {}",
+        index, element
+    );
 }
