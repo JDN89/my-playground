@@ -42,4 +42,14 @@ fn main() {
         }
     };
     println!("the value of result is {}", result);
+
+    // for loop
+    // for loop is the safest loop
+    // if you want to tloop over the el of an array with a while loop
+    // your code might break if you change the length of the arr
+    // with a for loop you don't need tos pecify the length of an array
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+    println!("LI");
 }
