@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using csharp.Problems;
 using leetcode_csharp.Problems;
 using leetcode_csharp.Problems.MergeSortedList;
 
@@ -17,3 +18,5 @@ Console.WriteLine(result);
 
 // ValidParantheses.IsValid("){");
 
+var result = MaxSubArray.FindMax(new[]{-2,1,-3,4,-1,2,1,-5,4});
+Console.WriteLine($"{result}");
