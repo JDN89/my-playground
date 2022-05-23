@@ -18,5 +18,8 @@ Console.WriteLine(result);
 
 // ValidParantheses.IsValid("){");
 
-var result = MaxSubArray.FindMax(new[]{-2,1,-3,4,-1,2,1,-5,4});
-Console.WriteLine($"{result}");
+//var result = MaxSubArray.FindMax(new[]{-2,1,-3,4,-1,2,1,-5,4});
+//Console.WriteLine($"{result}");
+//============= staircasse prob====
+var result = RecursionStaircase.FindNumWays(4);
+Console.WriteLine(result);
