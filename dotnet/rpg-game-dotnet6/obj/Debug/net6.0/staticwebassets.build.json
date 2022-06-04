@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jxq7Bm6GobZuhRRhx3Kwmrb/tdo7Se4dNF4ihC1R8fE=",
+  "Source": "rpg-game-dotnet6",
+  "BasePath": "_content/rpg-game-dotnet6",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
