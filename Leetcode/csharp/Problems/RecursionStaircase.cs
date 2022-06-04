@@ -17,11 +17,22 @@ namespace csharp.Problems
 
     public class RecursionStaircase
     {
-        public static  int FindNumWays (int n) {
+
+        Dictionary<int,int> memo = new Dictionary<int, int>();
+        public  int FindNumWays (int n) {
+            
             if (n == 0 || n ==1 ) {
-                return 1;
-            } else
-            return FindNumWays(n-1)+ FindNumWays(n-2); 
+                return memo[n] = 1;
+
+            } 
+            if (memo.ContainsKey(n)) {
+                return memo[n];
+            }
+
+            else
+            {
+                return memo[n] = FindNumWays(n-1) + FindNumWays(n-2);
+            } 
 
 
         }
