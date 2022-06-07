@@ -22,12 +22,12 @@ namespace rpg_game_dotnet6.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<List<Character>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> Get()
         {
             return Ok(await _characterService.GetAllCharacters());
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Character>> GetSingle(int id)
+        public async Task<ActionResult<ServiceResponse<Character>>> GetSingle(int id)
         {
             // first throws exceptions if no character found
             // firstOrDefault returns null if no character found
@@ -35,7 +35,7 @@ namespace rpg_game_dotnet6.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Character>>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
         {
             return Ok(await _characterService.AddCharacter(newCharacter));
         }

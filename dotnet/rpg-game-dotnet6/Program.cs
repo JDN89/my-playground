@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //if we inject ICharacter interface, the corresponding class is the CharacterService class
 // easy to sway out classes
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 
 var app = builder.Build();
