@@ -9,6 +9,22 @@ Console.WriteLine("Hello, World!");
 // probleem: als je veel props hebt -> veel ctor argumenten -> oplossing C#11 is Required
 Person person1 = new Person("Juan");
 
+var arr = new int[] { 0, 1, 2 };
+foreach (int el in arr)
+{
+
+    Console.WriteLine(el);
+}
+
+var list = new List<int>();
+list.Add(1);
+
+foreach (int el in list)
+{
+
+    Console.WriteLine("list el:{0}", el);
+}
+
 // person1 is an object -> instantiation of the Person class
 // init keyword -> initialize prop upon class instantiation
 

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using rpg_game_dotnet6.Dtos.Character;
 using rpg_game_dotnet6.Models;
 using rpg_game_dotnet6.Services.CharacterService;
 
@@ -9,25 +10,27 @@ namespace rpg_game_dotnet6.Controllers
     [Route("[controller]")]
     public class CharacterController : ControllerBase
     {
-        private static List<Character> characters = new List<Character>{
+        private static List<Character> characters = new List<Character>
+        {
             new Character(),
             new Character {Id = 1, Name = "Sam"}
         };
+
         private readonly ICharacterService _characterService;
 
         public CharacterController(ICharacterService characterService)
         {
             _characterService = characterService;
-
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<Character>>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
             return Ok(await _characterService.GetAllCharacters());
         }
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<Character>>> GetSingle(int id)
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> GetSingle(int id)
         {
             // first throws exceptions if no character found
             // firstOrDefault returns null if no character found
@@ -35,10 +38,9 @@ namespace rpg_game_dotnet6.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter)
         {
             return Ok(await _characterService.AddCharacter(newCharacter));
         }
-
     }
 }
