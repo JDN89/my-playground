@@ -11,6 +11,6 @@ public class Hondjes : VierVoeter
 
     public override void Wandel()
     {
-        Console.WriteLine("the fuck is het hondenwandelgeluid, kies de volgende keer een beter voorbeeld mong");
+        Console.WriteLine(" waggel waggel, is dit een honden wandel geluid? ");
     }
 }
