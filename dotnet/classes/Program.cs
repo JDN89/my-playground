@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using classes;
+
 Console.WriteLine("Hello, World!");
 // ctor to avoid null value object props
 
@@ -15,6 +18,12 @@ foreach (int el in arr)
 
     Console.WriteLine(el);
 }
+// practice polymorphism
+VierVoeter rat = new VierVoeter("ratman");
+rat.Wandel();
+
+Hondjes hondje = new Hondjes("Victor");
+hondje.Wandel();
 
 var list = new List<int>();
 list.Add(1);
