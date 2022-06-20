@@ -8,6 +8,11 @@ Person jan = new Person
     Age = 25
 };
 
+string name = "sandeep";
+string myName = name;
+Console.WriteLine("== operator result is {0}", name == myName);
+Console.WriteLine("Equals method result is {0}", name.Equals(myName));
+Console.ReadKey();
 
 
 Console.WriteLine(jan.Age);
