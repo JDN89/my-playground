@@ -1,4 +1,4 @@
-
+namespace studies.TEST;
 
 class Person : Weirdo
 {

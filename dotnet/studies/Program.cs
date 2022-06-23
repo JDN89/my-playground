@@ -1,41 +1,51 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using studies.TEST;
+using studies.Struct;
 
+var mees = new Bird(2, true);
+mees.flies();
+var ditto = new Penguin(2, true);
+ditto.flies();
+ditto.Wings = 3;
+Console.WriteLine($" ditto has {ditto.Wings} wings now ");
+Penguin.Dive();
+var bekky = ditto;
+bekky.Wings = 2;
+var strucky = new CheckMyStructOut(2);
+var struktje = strucky;
+struktje.MyMethod(3);
+Console.WriteLine($"the value Num {strucky.Num} of strucky  hasn;t changed, because Struct is a value type stored in the stack -> ref points to the heap");
+Console.WriteLine($"the value Num of struktje{struktje.Num}");
 
-Person jan = new Person
+Console.WriteLine($" ditto has {ditto.Wings} wings now, after bekky = ditto");
+Wadde.Access();
+public class Bird
 {
-    Name = "Juan",
-    Age = 25
-};
+    public int Wings { get; set; }
+    public bool Flies { get; set; }
+    public Bird(int wings, bool flies)
 
-string name = "sandeep";
-string myName = name;
-Console.WriteLine("== operator result is {0}", name == myName);
-Console.WriteLine("Equals method result is {0}", name.Equals(myName));
-Console.ReadKey();
-
-
-Console.WriteLine(jan.Age);
-
-Person dork = jan;
-// jan is using the public method from the abstract class
-// public method => need to instantiate class and call method on instantiated class
-// belongs to an instance of a class <> static belongs to an class
-jan.comment();
-
-//static method => you can only call this on the Class without instantiating it
-
-Person.staticComment();
-
-dork.Age = 30;
-Console.WriteLine(jan.Age); // output is 30
-
-/* you can instantiate an abstract clas
-Weirdo bert = new Weirdo
-{
-
-    Name = "Juan",
-    Age = 25
+    {
+        this.Wings = wings;
+        this.Flies = flies;
+    }
+    public virtual void flies()
+    {
+        Console.WriteLine($"I believe I can fly, because I have {Wings} wings");
+    }
 }
 
-*/
+public class Penguin : Bird
+{
+    // how to inherit ctor
+    public Penguin(int wings, bool flies) : base(wings, flies)
+    { }
+
+    public override void flies()
+    {
+        Console.WriteLine($"I believe I can't fly, eventough I have {Wings} wings");
+    }
+    public static void Dive()
+    {
+        Console.WriteLine($"I can dive and swim, I don't need to fly!");
+    }
+}
