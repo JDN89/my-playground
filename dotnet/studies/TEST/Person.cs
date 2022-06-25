@@ -4,6 +4,9 @@ class Person : Weirdo
 {
     public string Name { get; set; }
     public int Age { get; set; }
+    //default of a nullable prop is null?
+    public int? Nulla { get; set; } = default;
+
 
 
 

@@ -18,6 +18,20 @@ Console.WriteLine($"the value Num of struktje{struktje.Num}");
 
 Console.WriteLine($" ditto has {ditto.Wings} wings now, after bekky = ditto");
 Wadde.Access();
+
+var jan = new Person()
+{
+    Name = "Jan",
+    Age = 33
+};
+//ref are by default nullable
+//Value types you have to mark as nullable
+if (jan.Nulla is null)
+{
+
+    Console.WriteLine($"The value of Jan.nulla is null");
+}
+
 public class Bird
 {
     public int Wings { get; set; }
