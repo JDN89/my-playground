@@ -1,6 +1,36 @@
-using studies.TEST;
-using studies.Struct;
+//using studies.TEST;
+//using studies.Struct;
 
+var test = new NoOutExample();
+var test1 = new OutExample();
+int value = 5;
+int secondVal = 6;
+var result = test.ExampleOut(value);
+test1.ExampleOut(out secondVal);
+Console.WriteLine(value);
+Console.WriteLine(result);
+Console.WriteLine(secondVal);
+
+public class NoOutExample
+{
+    public int ExampleOut(int value)
+    {
+        //    intValue = 10;
+        //   Console.WriteLine(intValue);
+        return value = 10;
+    }
+}
+
+
+public class OutExample
+{
+    public void ExampleOut(out int intValue)
+    {
+        intValue = 16;
+    }
+}
+
+/*
 var mees = new Bird(2, true);
 mees.flies();
 var ditto = new Penguin(2, true);
@@ -63,3 +93,4 @@ public class Penguin : Bird
         Console.WriteLine($"I can dive and swim, I don't need to fly!");
     }
 }
+*/
