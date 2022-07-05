@@ -1,3 +1,0 @@
-# Content second post
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio leo, iaculis vitae ex non, tristique congue metus. Suspendisse a dolor interdum, maximus ipsum quis, eleifend felis. Morbi consequat neque in pretium lobortis. Fusce ac magna a massa ultricies vehicula a in nulla. Phasellus sollicitudin ex ut venenatis condimentum. Phasellus ullamcorper nunc sit amet lorem consectetur, in congue arcu maximus. Nulla aliquam, nisi id varius egestas, diam odio facilisis lectus, sed faucibus enim est at velit. Donec sit amet condimentum felis, at lobortis velit. Aliquam erat volutpat. Curabitur gravida dignissim scelerisque. Vestibulum tempor consequat ultrices. In convallis enim in vehicula bibendum. Donec vitae dictum mauris.
