@@ -1,5 +1,5 @@
 ﻿using cSharp.codewars;
-
+TwoSum.TwoSums(new[] { 1, 2, 3 }, 4).OrderBy(a => a).ToArray();
 //PigLatin.PigIt("Pig latin is cool");
 PigLatin.PigIt("Hello World !");
 //HighestAndLowest.HighAndLow("1 2 3 4 5");
