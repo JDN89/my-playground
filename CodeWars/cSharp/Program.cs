@@ -1,7 +1,10 @@
 ﻿using cSharp.codewars;
-HighestAndLowest.HighAndLow("1 2 3 4 5");
-HighestAndLowest.HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4");
-ShortestWord.FindShort("bitcoin take over the world maybe who knows perhaps");
+
+//PigLatin.PigIt("Pig latin is cool");
+PigLatin.PigIt("Hello World !");
+//HighestAndLowest.HighAndLow("1 2 3 4 5");
+//HighestAndLowest.HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4");
+// ShortestWord.FindShort("bitcoin take over the world maybe who knows perhaps");
 
 
 // UniqueNumber.GetUnique(new int[] { 1, 1, 1, 2, 1, 1 });

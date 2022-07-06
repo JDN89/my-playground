@@ -9,8 +9,30 @@ namespace cSharp.codewars
     {
         public static string PigIt(string str)
         {
+            string sentence = "";
             var temp = str.Split(' ').ToList();
-            return str;
+
+            foreach (var i in temp)
+            {
+                if (Char.IsLetter(i[0]))
+                {
+
+                    var first = i.First();
+
+                    var cut = i.Remove(0, 1);
+
+                    var final = cut + first + "ay";
+                    sentence += $"{final} ";
+                }
+                else
+                {
+                    sentence += i;
+                }
+
+                Console.WriteLine(sentence);
+
+            }
+            return sentence.TrimEnd();
         }
     }
 }
