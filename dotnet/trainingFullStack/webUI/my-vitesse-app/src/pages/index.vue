@@ -2,7 +2,7 @@
 // const name = $ref('')
 
 const router = useRouter()
-let message = $ref('')
+const message = $ref('')
 const postMessage = $ref('')
 let deleteMessage = $ref('')
 const go = () => {
@@ -21,6 +21,9 @@ const postData = (postMessage: string) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title: postMessage }),
   }).then(res => console.log(res.status))
+}
+const fetchPersons = () => {
+  fetch('https://localhost:7096/api/person').then(res => res.text()).then(t => console.log(t))
 }
 </script>
 
@@ -45,5 +48,8 @@ const postData = (postMessage: string) => {
     <h2>
       {{ postMessage }}
     </h2>
+    <button @click="fetchPersons">
+      Fetch Persons
+    </button>
   </div>
 </template>
