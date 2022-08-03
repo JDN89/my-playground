@@ -2,16 +2,17 @@
 
 #### Yaml instead of properties.
 
-####Denpendency Injection
+#### Denpendency Injection
 - Constructor based
 - @autowirded
   - Senior Dev : Why are you using field injection instead of constructor injection?Junior Dev : What is field injection? I am using @Autowired
-  ```
-  Field Injection uses reflection to set the values of private variables
-Constructor Injection happens at the time of creating the object itself
-  ```
-  https://eng.zemosolabs.com/when-not-to-autowire-in-spring-spring-boot-93e6a01cb793
-  <br>
+ > Field Injection uses reflection to set the values of private variables
+> Constructor Injection happens at the time of creating the object itself
+
+---
+  [article](https://eng.zemosolabs.com/when-not-to-autowire-in-spring-spring-boot-93e6a01cb793)
+---
+
   ```Suggestion: With Lombok's @RequiredArgsConstructor, I can have all the advantages of Constructor Injection without having to manually adapt constructors when adding/changing/removing injected fields.... assuming I don't need to do anything fancy in the constructor, and the Lombok-generated one is sufficient.
 
 Like this:
