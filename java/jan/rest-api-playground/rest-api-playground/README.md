@@ -1,3 +1,5 @@
+## Dummy DATA
+
 ## TODO
 
 #### Yaml instead of properties.
@@ -34,6 +36,11 @@ private final UserService userService;
 #### logging
   - check impact logging on rest api
 #### Unit tests
+  - look into following statements(ctor injection vs @Autowired -> impact on unit testing):
+    - no need to create a test-specific configuration component – dependencies are injected explicitly in a constructor
+    - reclaimed freedom of using final keywords 
+    - simple unit tests – reduced Spring Framework's overhead
+
 #### integrate web socket?
 #### Is their and async await equivalent in spring boot?
   - how do you make rest api asynchronous (or implemented behind the scenes)
