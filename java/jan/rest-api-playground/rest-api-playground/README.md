@@ -2,6 +2,10 @@
 
 ## TODO
 
+#### transfer DTO to entity and vice versa
+
+#### inject dummy data in DB (if no data) upon starting the api
+
 #### Yaml instead of properties.
 
 #### Denpendency Injection
