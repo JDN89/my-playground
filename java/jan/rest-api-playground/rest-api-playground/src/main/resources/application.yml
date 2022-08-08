@@ -1,5 +1,11 @@
 #see that the indentation is correct!
 #spring.config.import=secrets.properties
+#for loading and storing secrets in a seperate file that you add to gitignore
+#add spring-boot-configuration-processor
+#add file to gitignore
+#EnableConfigurationProperties in main class
+#Create record where you enable ConfigurationProperties(xxx)
+#load properties prefixed with xxx
 
 server:
   post: 8080
