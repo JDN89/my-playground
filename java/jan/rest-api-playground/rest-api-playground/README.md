@@ -5,6 +5,9 @@ What is use of record? How to use it in Spring Boot?
 
 #### transfer DTO to entity and vice versa
 
+#### create multidoc properties in yml file
+- define different environments and set one environment to active
+
 #### inject dummy data in DB (if no data) upon starting the api
 
 #### Yaml instead of properties.
