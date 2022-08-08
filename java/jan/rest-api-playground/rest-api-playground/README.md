@@ -1,5 +1,6 @@
 ## Dummy DATA
-
+how to inject dummy test data into db? Commandlinerunner?
+What is use of record? How to use it in Spring Boot?
 ## TODO
 
 #### transfer DTO to entity and vice versa
