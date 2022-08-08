@@ -1,8 +1,12 @@
 #see that the indentation is correct!
+#spring.config.import=secrets.properties
+
 server:
   post: 8080
 
 spring:
+  config:
+    import: secrets.properties
   datasource:
     url: jdbc:postgresql://localhost:5432/test
     username: jan
