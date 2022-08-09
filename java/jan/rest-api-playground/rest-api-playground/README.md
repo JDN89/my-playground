@@ -3,6 +3,9 @@ how to inject dummy test data into db? Commandlinerunner?
 What is use of record? How to use it in Spring Boot?
 ## TODO
 
+- Java 17, when is it better to replace your entity objects (classes) with records?
+- DTO objects will be records, do we need class for our db setup?
+
 #### transfer DTO to entity and vice versa
 
 #### create multidoc properties in yml file
