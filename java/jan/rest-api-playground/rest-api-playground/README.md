@@ -1,6 +1,26 @@
 ## Dummy DATA
 how to inject dummy test data into db? Commandlinerunner?
 What is use of record? How to use it in Spring Boot?
+
+## RECORDS - when to use in Spring boot?
+link: https://www.youtube.com/watch?v=3NshiQIy7p4
+- Data class
+- spring boot configuration properties 
+- Spring Data
+#### info:
+- records are immutable!
+- You can add checks and logic through creation of a constructor. 
+- You can't use records with Spring Data JPA, but you can use records wit JDBC
+
+## Spring Data Pagination
+- instead of returning all the data, only return info on a certain page/ a defined amount of records
+- https://www.youtube.com/watch?v=oq-c3D67WqM
+
+## Faker
+- in dev , fake data with the faker library
+- https://www.youtube.com/watch?v=UzBOv_SHUng
+
+
 ## TODO
 
 - Java 17, when is it better to replace your entity objects (classes) with records?
