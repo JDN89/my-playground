@@ -5,6 +5,14 @@
   - name db "people" is specified in the yml file
  - use Faker library to create extra dummy data
 
+#### Faker
+- in dev , fake data with the faker library
+- https://www.youtube.com/watch?v=UzBOv_SHUng
+
+## Spring Data Pagination
+- instead of returning all the data, only return info on a certain page/ a defined amount of records
+- https://www.youtube.com/watch?v=oq-c3D67WqM
+
 ## Storing Secrets
 
 - create a secrets.properties file
@@ -19,31 +27,25 @@ link: https://www.youtube.com/watch?v=3NshiQIy7p4
 - Data class
 - spring boot configuration properties 
 - Spring Data
+
 #### info:
 - records are immutable!
 - You can add checks and logic through creation of a constructor. 
 - You can't use records with Spring Data JPA, but you can use records wit JDBC
 
-## Spring Data Pagination
-- instead of returning all the data, only return info on a certain page/ a defined amount of records
-- https://www.youtube.com/watch?v=oq-c3D67WqM
 
-## Faker
-- in dev , fake data with the faker library
-- https://www.youtube.com/watch?v=UzBOv_SHUng
 
 
 ## TODO
 
-- Java 17, when is it better to replace your entity objects (classes) with records?
-- DTO objects will be records, do we need class for our db setup?
+- how to create and throw custom errors!
+- unit tests
+
 
 #### transfer DTO to entity and vice versa
 
 #### create multidoc properties in yml file
 - define different environments and set one environment to active
-
-#### inject dummy data in DB (if no data) upon starting the api
 
 #### Yaml instead of properties.
 
