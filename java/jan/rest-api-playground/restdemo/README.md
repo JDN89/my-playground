@@ -1,3 +1,16 @@
+##Lookup
+- difference Iterable and List
+  - pagingAndSortingRepository returns Iterable? look to documentation and examples
+  - look into pagination documentation
+  - look into what the sort parameter does and which string values can you pass it?
+
+
+## TODO
+
+- how to create and throw custom errors!
+- unit tests
+
+
 ## Dummy DATA
  - Inject data via CommandLineRunner
   - Had to remove lombok from my models and Create getters,setters, ctors by hand -> look into it
@@ -34,12 +47,6 @@ link: https://www.youtube.com/watch?v=3NshiQIy7p4
 - You can't use records with Spring Data JPA, but you can use records wit JDBC
 
 
-
-
-## TODO
-
-- how to create and throw custom errors!
-- unit tests
 
 
 #### transfer DTO to entity and vice versa
