@@ -1,6 +1,7 @@
 ## Dummy DATA
-how to inject dummy test data into db? Commandlinerunner?
-What is use of record? How to use it in Spring Boot?
+ - Inject data via CommandLineRunner
+  - Had to remove lombok from my models and Create getters,setters, ctors by hand -> look into it
+ - use Faker library to craete extra dummy data
 
 ## Storing Secrets
 
