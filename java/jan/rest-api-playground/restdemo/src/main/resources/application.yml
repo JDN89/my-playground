@@ -1,0 +1,18 @@
+
+server:
+  post: 8080
+
+spring:
+  config:
+    import: secret.properties
+  datasource:
+    generate-unique-name: false
+    name: people
+  graphql:
+    graphiql:
+      enabled: true
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true

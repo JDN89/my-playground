@@ -1,16 +1,16 @@
-package com.jdncodes.restapiplayground;
+package com.jdn.restdemo;
 
-import com.jdncodes.restapiplayground.entity.SecretConfigProperties;
+import com.jdn.restdemo.entity.SecretConfigProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
 @EnableConfigurationProperties(SecretConfigProperties.class)
-public class RestApiPlaygroundApplication {
+public class RestdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestApiPlaygroundApplication.class, args);
+		SpringApplication.run(RestdemoApplication.class, args);
 	}
 
 }

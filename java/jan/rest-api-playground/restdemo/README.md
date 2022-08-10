@@ -2,6 +2,15 @@
 how to inject dummy test data into db? Commandlinerunner?
 What is use of record? How to use it in Spring Boot?
 
+## Storing Secrets
+
+- create a secrets.properties file
+- add file to gitignore
+- create a SecretConfigRecord
+  - @ConfigurationProperties("xxx")
+- import secrets.properties into your main properties or yml file
+- EnableConfigurationProperties into  your main class 
+
 ## RECORDS - when to use in Spring boot?
 link: https://www.youtube.com/watch?v=3NshiQIy7p4
 - Data class
@@ -78,4 +87,5 @@ private final UserService userService;
 
 #### Test performance - look for equivalent of Nbomber (dotnet)
 - check impact logging on rest api
+
 

@@ -1,10 +1,10 @@
-package com.jdncodes.restapiplayground;
+package com.jdn.restdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApiPlaygroundApplicationTests {
+class RestdemoApplicationTests {
 
 	@Test
 	void contextLoads() {
