@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/people")
 @RequiredArgsConstructor
 public class PersonController {
     private final PersonService service;
 
-    @GetMapping("/findall")
+    @GetMapping
     public Iterable<Person> findAll() {
         return service.findAll();
     }
 
-    @GetMapping
-    public Page<Person> findAll(@RequestParam int page, @RequestParam int size, @RequestParam String sort) {
-        return service.findAllOnPage(page,size,sort);
+    // http://localhost:8080/api/v1/people/page?page=0&size=4
+    @GetMapping("/page")
+    public Page<Person> findAllOnPage(@RequestParam int page, @RequestParam int size) {
+        return service.findAllOnPage(page,size);
     }
 }

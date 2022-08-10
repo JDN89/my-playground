@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface PersonService {
     Iterable<Person> findAll();
-    Page<Person> findAllOnPage(@RequestParam int page, @RequestParam int size, @RequestParam String sort);
+    Page<Person> findAllOnPage(@RequestParam int page, @RequestParam int size);
 }
