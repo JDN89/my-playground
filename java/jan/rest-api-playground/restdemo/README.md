@@ -1,7 +1,9 @@
 ## Dummy DATA
  - Inject data via CommandLineRunner
   - Had to remove lombok from my models and Create getters,setters, ctors by hand -> look into it
- - use Faker library to craete extra dummy data
+ - connect to h2 db via: jdbc:h2:mem:people
+  - name db "people" is specified in the yml file
+ - use Faker library to create extra dummy data
 
 ## Storing Secrets
 
