@@ -4,12 +4,22 @@
   - look into pagination documentation
   - look into what the sort parameter does and which string values can you pass it?
 
+  
+- data JPA -> how to do SQL joins?
+- look into id generatevalue
+- look into joins and relationships between tables
 
 ## TODO
 
 - how to create and throw custom errors!
 - unit tests
 
+## Why Constructor Injection is best approach DI
+https://www.youtube.com/watch?v=aX-bgylmprA
+- Instead of controller depending on a repository or service, we're going to inverse it
+  - Inversion of control -> management outsourcing management of dependencies to the framework -> DI
+- Easier to test. Field Injection uses reflection -> for testing you also have to use tests.
+  - if you use ctor injection, it's okay to use field injection in your tests.
 
 ## Dummy DATA
  - Inject data via CommandLineRunner
