@@ -8,6 +8,9 @@
 - data JPA -> how to do SQL joins?
 - look into id generatevalue
 - look into joins and relationships between tables
+- do you need to define many to one and one to many on both entities?
+
+- 
 
 ## TODO
 
@@ -27,6 +30,21 @@ https://www.youtube.com/watch?v=aX-bgylmprA
  - connect to h2 db via: jdbc:h2:mem:people
   - name db "people" is specified in the yml file
  - use Faker library to create extra dummy data
+
+## JAP DATA 
+
+## relationships
+
+- Go over many to one and one to may documentation, not clear for now.
+#### CascadeType
+```
+You shouldn't use CascadeType.ALL on @ManyToOne since entity state transitions should propagate from parent entities to child ones, not the other way around.
+
+The @ManyToOne side is always the Child association since it maps the underlying Foreign Key column.
+
+Therefore, you should move the CascadeType.ALL from the @ManyToOne association to the @OneToMany side, which should also use the mappedBy attribute since it's the most efficient one-to-many table relationship mapping.
+
+```
 
 #### Faker
 - in dev , fake data with the faker library
