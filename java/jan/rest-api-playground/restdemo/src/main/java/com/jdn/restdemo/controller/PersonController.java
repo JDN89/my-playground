@@ -4,6 +4,7 @@ import com.jdn.restdemo.model.Person;
 import com.jdn.restdemo.services.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,7 @@ public class PersonController {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public void addNewPerson(@RequestBody Person person) {
         service.addNewPerson(person);
     }
