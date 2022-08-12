@@ -39,4 +39,9 @@ public class PersonController {
     public void deletePerson(@PathVariable("id") int id) {
         service.deletePerson(id);
     }
+
+    @PutMapping("/person/{id}")
+    public Person updatePerson(@PathVariable("id") int id, @RequestBody Person person) {
+        return service.updatePerson(id, person);
+    }
 }

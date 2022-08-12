@@ -14,4 +14,6 @@ public interface PersonService {
     void deletePerson(Integer id);
 
     Person findPersonById(Integer id);
+
+    Person updatePerson(int id, Person person);
 }
