@@ -11,10 +11,10 @@ public class Person {
     private String firstName;
     private String lastName;
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id",referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     // check if you can save with null values
-    //@NotNull
+
     private Address address;
 
     public Person(String firstName, String lastName, String email, Address address) {
