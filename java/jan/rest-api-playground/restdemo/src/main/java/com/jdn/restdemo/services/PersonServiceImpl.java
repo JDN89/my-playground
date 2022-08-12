@@ -20,6 +20,7 @@ public class PersonServiceImpl implements PersonService {
         return repository.findAll();
     }
 
+    @Override
     public Page<Person> findAllOnPage(int page, int size) {
         PageRequest pr = PageRequest.of(page, size);
         return repository.findAll(pr);
