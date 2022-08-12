@@ -24,6 +24,11 @@ public class PersonController {
         return service.findAllOnPage(page, size);
     }
 
+    @GetMapping("/person/{id}")
+    public Person findPersonById(@PathVariable("id") Integer id) {
+        return service.findPersonById(id);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void addNewPerson(@RequestBody Person person) {

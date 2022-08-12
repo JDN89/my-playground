@@ -52,4 +52,14 @@ public class PersonServiceImpl implements PersonService {
         repository.deleteById(id);
     }
 
+    @Override
+    public Person findPersonById(Integer id) {
+        Optional<Person> personById = repository.findPersonById(id);
+
+        if (personById.isEmpty()) {
+            throw new IllegalStateException("Person not found");
+        }
+        return personById.get();
+    }
+
 }
