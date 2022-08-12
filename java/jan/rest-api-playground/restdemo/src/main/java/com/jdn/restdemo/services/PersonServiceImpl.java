@@ -17,6 +17,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Iterable<Person> findAll() {
+        //if you want to convert the iterable to a list
+//        Iterable<Person> all = repository.findAll();
+//        List<Person> list = Streamable.of(all).stream().toList();
         return repository.findAll();
     }
 
@@ -31,7 +34,7 @@ public class PersonServiceImpl implements PersonService {
 
         Optional<Person> personByEmail = repository.findPersonByEmail(person.getEmail());
 
-        if(personByEmail.isPresent()) {
+        if (personByEmail.isPresent()) {
             throw new IllegalStateException("Person already registered");
         }
 
