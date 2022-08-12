@@ -13,6 +13,8 @@ public class Person {
     private String email;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id",referencedColumnName = "id")
+    // check if you can save with null values
+    //@NotNull
     private Address address;
 
     public Person(String firstName, String lastName, String email, Address address) {
