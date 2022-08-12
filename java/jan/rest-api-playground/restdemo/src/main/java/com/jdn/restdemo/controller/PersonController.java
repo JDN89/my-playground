@@ -21,12 +21,17 @@ public class PersonController {
     // http://localhost:8080/api/v1/people/page?page=0&size=4
     @GetMapping("/pagination")
     public Page<Person> findAllOnPage(@RequestParam int page, @RequestParam int size) {
-        return service.findAllOnPage(page,size);
+        return service.findAllOnPage(page, size);
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void addNewPerson(@RequestBody Person person) {
         service.addNewPerson(person);
+    }
+
+    @DeleteMapping("/person/{id}")
+    public void deletePerson(@PathVariable("id") int id) {
+        service.deletePerson(id);
     }
 }

@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface PersonRepository extends PagingAndSortingRepository<Person, Integer> {
     //JBQL
     //@Query("SELECT s FROM Student s WHERE s.email = ?1")
-    Optional<Person> findPersonByEmail(String emailj);
+    Optional<Person> findPersonByEmail(String email);
+
+    Optional<Person> findPersonById(Integer id);
 
 }

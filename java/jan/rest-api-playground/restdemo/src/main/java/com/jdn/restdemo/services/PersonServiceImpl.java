@@ -43,4 +43,13 @@ public class PersonServiceImpl implements PersonService {
         repository.save(person);
     }
 
+    @Override
+    public void deletePerson(Integer id) {
+        Optional<Person> person = repository.findPersonById(id);
+        if (person.isEmpty()) {
+            throw new IllegalStateException("Person not found in db");
+        }
+        repository.deleteById(id);
+    }
+
 }
