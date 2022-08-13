@@ -15,7 +15,13 @@
 ## TODO
 
 - how to create and throw custom errors!
+ - Create custom error for when post person object is present but not address -> optional = false
 - unit tests
+- validation
+- Call an external httpclient via java 11 httpclient api
+ - https://www.baeldung.com/java-9-http-client
+ - https://howtodoinjava.com/java/library/jaxrs-client-httpclient-get-post/
+ - https://www.youtube.com/watch?v=VMUaOZ6kvJ0&t=1030s
 
 ## Why Constructor Injection is best approach DI
 https://www.youtube.com/watch?v=aX-bgylmprA
