@@ -1,5 +1,6 @@
 package com.jdn.restdemo.controller;
 
+import com.jdn.restdemo.exception.PersonNotFoundException;
 import com.jdn.restdemo.model.Person;
 import com.jdn.restdemo.services.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,9 @@ public class PersonController {
     }
 
     @GetMapping("/person/{id}")
-    public Person findPersonById(@PathVariable("id") Integer id) {
+    public Person findPersonById(@PathVariable("id") Integer id) throws PersonNotFoundException {
         return service.findPersonById(id);
+
     }
 
     @PostMapping()

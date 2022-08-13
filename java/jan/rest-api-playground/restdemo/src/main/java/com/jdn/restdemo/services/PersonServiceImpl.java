@@ -1,5 +1,6 @@
 package com.jdn.restdemo.services;
 
+import com.jdn.restdemo.exception.PersonNotFoundException;
 import com.jdn.restdemo.model.Person;
 import com.jdn.restdemo.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,19 +55,19 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person findPersonById(Integer id) {
+    public Person findPersonById(Integer id) throws PersonNotFoundException {
         Optional<Person> personById = repository.findPersonById(id);
-
         if (personById.isEmpty()) {
-            throw new IllegalStateException("Person not found");
+            throw new PersonNotFoundException("Person not found");
         }
+
         return personById.get();
     }
 
     // I update the Person and Address entitities at the same time and override all the fields
     // This can make an application slow if you have a lot of fields
     // solution 1:
-    // I have a separate entity for address -> update address separately -> address service
+    // I have a separate entity for address -> update address separately, via an address controller and service
     // Solution 2
     // Partial Data update (Map DTO to db) and only update the fields that have been changed
     // https://www.baeldung.com/spring-data-partial-update
