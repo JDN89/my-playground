@@ -20,6 +20,14 @@ public class Address {
     public Address() {
     }
 
+    // I generated also an all args constructor for the unit test person mocking
+    // I needed an id for the itShouldSavePerson test -> creation person with id -> then findById
+    public Address(Integer id, String address, String city) {
+        this.id = id;
+        this.address = address;
+        this.city = city;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -46,10 +54,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+        return "Address{" + "id=" + id + ", address='" + address + '\'' + ", city='" + city + '\'' + '}';
     }
 }

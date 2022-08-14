@@ -27,6 +27,16 @@ public class Person {
     public Person() {
     }
 
+    // I generated also an all args constructor for the unit test person mocking
+    // I needed an id for the itShouldSavePerson test -> creation person with id -> then findById
+    public Person(Integer id, String firstName, String lastName, String email, Address address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+    }
+
     public Integer getId() {
         return id;
     }

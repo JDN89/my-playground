@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+// It can be viewed as an interceptor of exceptions thrown by methods annotated with @RequestMapping
 @ControllerAdvice
 @ResponseStatus
 public class RespsonseEntityExceptionHandler extends ResponseEntityExceptionHandler {
