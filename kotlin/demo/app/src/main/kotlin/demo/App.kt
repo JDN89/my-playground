@@ -7,36 +7,73 @@ import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 import java.util.IllegalFormatCodePointException
 
-val list = listOf<Int>(1,2,3,4,5,6)
+data class Person(
+    val firstName: String = "Jan",
+    val lastName: String = "De Niels"
+)
+{
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
+    fun printName () {
+        println("${
+            this.firstName
+        }, ${
+            this.lastName
+        }")
+    }
 }
 
-fun colorPicker(color:String): Int = when(color) {
-    "yellow" -> 1
-    "red" -> 2
-    else -> throw IllegalArgumentException("not a valid color")
-
+class Address() {
+    var name: String = "Jan"
+    var street: String = "Helen"
+    var city: String = "London"
+    var state: String? = null
+    var zip: String = "123456"
 }
+
+fun copyAddress(address: Address): Address {
+    val result = Address() // there's no 'new' keyword in Kotlin
+    result.name = address.name // accessors are called
+    result.street = address.street
+    // ...
+    return result
+}
+
 
 fun main() {
-colorPicker("yellow")
-
-
-    fun returnString(x:List<Int>) : List<String>{
-        val strings = x.map { it ->
-            when (it) {
-                1 -> "one"
-                2 -> "two"
-                else -> "other number"
-            }
-        }
-return strings
-    }
-   println(returnString(list))
+    val jan = Person()
+    jan.printName()
 }
 
+//OLD CODE examples
+
+//val list = listOf<Int>(1,2,3,4,5,6)
+//
+//class App {
+//    val greeting: String
+//        get() {
+//            return "Hello World!"
+//        }
+//}
+//
+//
+//}
+
+//fun colorPicker(color:String): Int = when(color) {
+//    "yellow" -> 1
+//    "red" -> 2
+//    else -> throw IllegalArgumentException("not a valid color")
+
+//colorPicker("yellow")
+//
+//
+//    fun returnString(x:List<Int>) : List<String>{
+//        val strings = x.map { it ->
+//            when (it) {
+//                1 -> "one"
+//                2 -> "two"
+//                else -> "other number"
+//            }
+//        }
+//return strings
+//    }
+//   println(returnString(list))
