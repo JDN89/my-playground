@@ -3,8 +3,11 @@
  */
 package demo
 
+import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 import java.util.IllegalFormatCodePointException
+
+val list = listOf<Int>(1,2,3,4,5,6)
 
 class App {
     val greeting: String
@@ -13,22 +16,27 @@ class App {
         }
 }
 
-object Test {
+fun colorPicker(color:String): Int = when(color) {
+    "yellow" -> 1
+    "red" -> 2
+    else -> throw IllegalArgumentException("not a valid color")
+
 }
 
-
-//val list = listOf<Int>(1, 2, 3, 4, 5)
-val map = mapOf<String, Int>("a" to 1, "b" to 2)
-
-
 fun main() {
-//    println(App().greeting)
-//    val filter = list.filter { x ->
-//        x > 3
-////    }
-//    println(filter)
-    println(map.map { x -> x.key })
-    println(map.map { x -> "key is ${x.key} : value is ${x.value}" })
+colorPicker("yellow")
 
+
+    fun returnString(x:List<Int>) : List<String>{
+        val strings = x.map { it ->
+            when (it) {
+                1 -> "one"
+                2 -> "two"
+                else -> "other number"
+            }
+        }
+return strings
+    }
+   println(returnString(list))
 }
 
