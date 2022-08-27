@@ -10,6 +10,8 @@ import java.util.IllegalFormatCodePointException
 fun Person.printer (x: Person) {
      println(x)
 }
+val list = (1..10)
+
 data class Person(
     val firstName: String = "Jan",
     val lastName: String = "De Niels"
@@ -45,7 +47,8 @@ fun copyAddress(address: Address): Address {
 fun main() {
     val jan = Person()
     jan.printer(jan)
-
+for (x in list) {
+    println(x)
 //    jan.printName()
-}
+}}
 
