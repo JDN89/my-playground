@@ -7,6 +7,9 @@ import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 import java.util.IllegalFormatCodePointException
 
+fun Person.printer (x: Person) {
+     println(x)
+}
 data class Person(
     val firstName: String = "Jan",
     val lastName: String = "De Niels"
@@ -41,39 +44,8 @@ fun copyAddress(address: Address): Address {
 
 fun main() {
     val jan = Person()
-    jan.printName()
+    jan.printer(jan)
+
+//    jan.printName()
 }
 
-//OLD CODE examples
-
-//val list = listOf<Int>(1,2,3,4,5,6)
-//
-//class App {
-//    val greeting: String
-//        get() {
-//            return "Hello World!"
-//        }
-//}
-//
-//
-//}
-
-//fun colorPicker(color:String): Int = when(color) {
-//    "yellow" -> 1
-//    "red" -> 2
-//    else -> throw IllegalArgumentException("not a valid color")
-
-//colorPicker("yellow")
-//
-//
-//    fun returnString(x:List<Int>) : List<String>{
-//        val strings = x.map { it ->
-//            when (it) {
-//                1 -> "one"
-//                2 -> "two"
-//                else -> "other number"
-//            }
-//        }
-//return strings
-//    }
-//   println(returnString(list))
