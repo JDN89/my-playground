@@ -1,1 +1,0 @@
-/home/jan/Coding/my-playground/rust/the_rust_programming_language/Structs/method-syntax/target/debug/method-syntax: /home/jan/Coding/my-playground/rust/the_rust_programming_language/Structs/method-syntax/src/main.rs

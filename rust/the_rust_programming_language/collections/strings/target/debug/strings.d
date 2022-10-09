@@ -1,1 +1,0 @@
-/home/jan/Coding/my-playground/rust/the_rust_programming_language/collections/strings/target/debug/strings: /home/jan/Coding/my-playground/rust/the_rust_programming_language/collections/strings/src/main.rs
