@@ -1,0 +1,1 @@
+/home/jan/Coding/my-playground/rust/the_rust_programming_language/Structs/exmaple_struct_program/target/debug/exmaple_struct_program: /home/jan/Coding/my-playground/rust/the_rust_programming_language/Structs/exmaple_struct_program/src/main.rs
