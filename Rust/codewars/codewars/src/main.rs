@@ -1,14 +1,12 @@
-fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
-    let expected: i32;
-
-    match operator {
-        '+' => expected = value1 + value2,
-        '-' => expected = value1 - value2,
-        '/' => expected = value1 / value2,
-        '*' => expected = value1 * value2,
+pub(crate) fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
+    let expected: i32 = match operator {
+        '+' => value1 + value2,
+        '-' => value1 - value2,
+        '/' => value1 / value2,
+        '*' => value1 * value2,
         _ => unreachable!(),
-    }
-    return expected;
+    };
+    expected
 }
 
 fn main() {
