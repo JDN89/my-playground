@@ -1,11 +1,23 @@
 
 fn alphabet_position(text: &str) -> String {
     
-    "done".to_string()
+    //https://en.wikipedia.org/wiki/ASCII#Printable_characters
+    text
+        .to_lowercase()
+        .chars()
+        .filter( |c|  c >= &'a' && c <= &'z')
+        .map(|c| (c as u32 -96).to_string())
+        .collect::<Vec<String>>()
+        .join(" ")
     // Code here...
+    //
 }
 
 fn main() {
+    
+    let x: char = 'a';
+       let b: u32 = x as u32;
+    println!("{}", b);
     let result = alphabet_position("abd");
     println!("{}", result)
 }
