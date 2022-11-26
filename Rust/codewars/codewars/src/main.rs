@@ -1,6 +1,5 @@
-
 // fn alphabet_position(text: &str) -> String {
-//     
+//
 //     //https://en.wikipedia.org/wiki/ASCII#Printable_characters
 //     text
 //         .to_lowercase()
@@ -10,9 +9,8 @@
 //         .collect::<Vec<String>>()
 //         .join(" ")
 //     // Code here...
-//     
+//
 // }
-
 
 // fn spin_words(words: &str) -> String {
 
@@ -23,43 +21,53 @@
 //      }  ).collect::<Vec<String>>().join(" ");
 
 //     println!("{:?}",result);
-//     
-//         
+//
+//
 //     return "Hello".to_string()
 
-
 // }
-use itertools::Itertools;
+/* use itertools::Itertools;
 
 fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
     let mut numbers = numbers.to_vec();
     match numbers.iter().position_min() {
         None => numbers,
-        Some(m) => {numbers.remove(m); numbers}
+        Some(m) => {
+            numbers.remove(m);
+            numbers
+      }
     }
+} */
+
+fn largest_five_digit_number(num: &str) -> u32 {
+    let mut max: u32 = 0;
+    let len_minus_4 = num.len() - 4;
+    let total_len = num.len();
+
+    println!("{}", len_minus_4);
+    println!("{}", total_len);
+
+    for i in 0..num.len() - 4 {
+        println!("{}",i);
+        let value = num.get(i..i + 5).unwrap().parse().unwrap();
+        if value > max {
+            max = value
+        };
+    }
+    max
 }
 
-
-
-
 fn main() {
-     remove_smallest(&[1, 2, 3, 4, 5]);
+    largest_five_digit_number("73455");
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-        const ERR_MSG: &str = "\nYour result (left) did not match the expected output (right)";
-    
-    fn dotest(a: &[u32], expected: &[u32]) {
-        assert_eq!(remove_smallest(a), expected, "{ERR_MSG} with numbers = {a:?}")
-    }
-    #[test]
-    fn fixed_tests() {
-        dotest(&[1, 2, 3, 4, 5], &[2, 3, 4, 5]);
-        dotest(&[1, 2, 3, 4], &[2, 3, 4]);
-        dotest(&[5, 3, 2, 1, 4], &[5, 3, 2, 4]);
-        dotest(&[1, 2, 3, 1, 1], &[2, 3, 1, 1]);
-    }
 
+    #[test]
+    fn test_basic() {
+        assert_eq!(largest_five_digit_number(&"12345"), 12345);
+        assert_eq!(largest_five_digit_number(&"731674765"), 74765);
+    }
 }
