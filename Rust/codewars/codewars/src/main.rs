@@ -39,35 +39,55 @@ fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
     }
 } */
 
-fn largest_five_digit_number(num: &str) -> u32 {
-    let mut max: u32 = 0;
-    let len_minus_4 = num.len() - 4;
-    let total_len = num.len();
+// fn largest_five_digit_number(num: &str) -> u32 {
+//     let mut max: u32 = 0;
+//     let len_minus_4 = num.len() - 4;
+//     let total_len = num.len();
+//
+//     println!("{}", len_minus_4);
+//     println!("{}", total_len);
+//
+//     for i in 0..num.len() - 4 {
+//         println!("{}",i);
+//         let value = num.get(i..i + 5).unwrap().parse().unwrap();
+//         if value > max {
+//             max = value
+//         };
+//     }
+//     max
+// }
+//
+// ===========================
+// iterate over Vec and return only non matching values
 
-    println!("{}", len_minus_4);
-    println!("{}", total_len);
+// fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+//
+//     a.retain(|i| !b.contains(i)).collect();
+// }
 
-    for i in 0..num.len() - 4 {
-        println!("{}",i);
-        let value = num.get(i..i + 5).unwrap().parse().unwrap();
-        if value > max {
-            max = value
-        };
-    }
-    max
+fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+    a.into_iter().filter(|x| !b.contains(x)).collect()
 }
 
+// fn array_diff<T: PartialEq>(mut a: Vec<T>, b: Vec<T>) -> Vec<T> {
+//     a.retain(|x| !b.contains(x));
+//     a
+// }
+
 fn main() {
-    largest_five_digit_number("73455");
+array_diff(vec![1,2,2], vec![1]);
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
     #[test]
-    fn test_basic() {
-        assert_eq!(largest_five_digit_number(&"12345"), 12345);
-        assert_eq!(largest_five_digit_number(&"731674765"), 74765);
+    fn returns_expected() {
+        assert_eq!(array_diff(vec![1,2], vec![1]), vec![2]);
+        assert_eq!(array_diff(vec![1,2,2], vec![1]), vec![2,2]);
+        assert_eq!(array_diff(vec![1,2,2], vec![2]), vec![1]);
+        assert_eq!(array_diff(vec![1,2,2], vec![]), vec![1,2,2]);
+        assert_eq!(array_diff(vec![], vec![1,2]), vec![]);
+        assert_eq!(array_diff(vec![1,2,3], vec![1,2]), vec![3]);
     }
 }
