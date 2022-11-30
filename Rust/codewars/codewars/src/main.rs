@@ -1,4 +1,25 @@
-// fn alphabet_position(text: &str) -> String {
+fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+    a.into_iter().filter(|x| !b.contains(x)).collect()
+}
+
+fn main() {
+    array_diff(vec![1, 2, 2], vec![1]);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn returns_expected() {
+        assert_eq!(array_diff(vec![1, 2], vec![1]), vec![2]);
+        assert_eq!(array_diff(vec![1, 2, 2], vec![1]), vec![2, 2]);
+        assert_eq!(array_diff(vec![1, 2, 2], vec![2]), vec![1]);
+        assert_eq!(array_diff(vec![1, 2, 2], vec![]), vec![1, 2, 2]);
+        assert_eq!(array_diff(vec![], vec![1, 2]), vec![]);
+        assert_eq!(array_diff(vec![1, 2, 3], vec![1, 2]), vec![3]);
+    }
+}
+
 //
 //     //https://en.wikipedia.org/wiki/ASCII#Printable_characters
 //     text
@@ -21,7 +42,7 @@
 //      }  ).collect::<Vec<String>>().join(" ");
 
 //     println!("{:?}",result);
-//
+//f
 //
 //     return "Hello".to_string()
 
@@ -65,29 +86,6 @@ fn remove_smallest(numbers: &[u32]) -> Vec<u32> {
 //     a.retain(|i| !b.contains(i)).collect();
 // }
 
-fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
-    a.into_iter().filter(|x| !b.contains(x)).collect()
-}
-
-// fn array_diff<T: PartialEq>(mut a: Vec<T>, b: Vec<T>) -> Vec<T> {
-//     a.retain(|x| !b.contains(x));
-//     a
+// fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+//     a.into_iter().filter(|x| !b.contains(x)).collect()
 // }
-
-fn main() {
-array_diff(vec![1,2,2], vec![1]);
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn returns_expected() {
-        assert_eq!(array_diff(vec![1,2], vec![1]), vec![2]);
-        assert_eq!(array_diff(vec![1,2,2], vec![1]), vec![2,2]);
-        assert_eq!(array_diff(vec![1,2,2], vec![2]), vec![1]);
-        assert_eq!(array_diff(vec![1,2,2], vec![]), vec![1,2,2]);
-        assert_eq!(array_diff(vec![], vec![1,2]), vec![]);
-        assert_eq!(array_diff(vec![1,2,3], vec![1,2]), vec![3]);
-    }
-}
