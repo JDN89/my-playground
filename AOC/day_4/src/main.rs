@@ -39,10 +39,15 @@ fn check_in_range(x: Pair, y: Pair) -> Vec<i8> {
     let mut in_range: Vec<i8> = Vec::new();
 
         if range_fp == range_sp {
-            if x.start == y.start && x.end == y.end {
+            if x.start != y.start && x.end != y.end {
+                &in_range.push(0);
+            }
+
+            else if x.start == y.start && x.end == y.end {
                 in_range.push(1)
             }
-            in_range.push(0)
+return in_range;
+                
         } else if range_fp > range_sp {
             for num in y.start..y.end+1 {
                 if (x.start..x.end).contains(&num) {
@@ -53,14 +58,13 @@ fn check_in_range(x: Pair, y: Pair) -> Vec<i8> {
         } 
 
         // else if range_fp < range_sp {
-            for num in x.start..x.end {
+            for num in x.start..x.end + 1 {
                 if (y.start..y.end).contains(&num) {
                     in_range.push(1);
                 }
                 in_range.push(0);
             }
         // }
-             println!("{:?}",in_range);
         in_range
 
 }
@@ -82,6 +86,7 @@ fn cleanup(all_pairs: String) -> i32 {
         };
 
 let in_range = check_in_range(frst_p, scnd_p);
+println!("{:?}",  in_range);
 result +=1
 
 
