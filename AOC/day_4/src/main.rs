@@ -38,35 +38,33 @@ fn check_in_range(x: Pair, y: Pair) -> Vec<i8> {
 
     let mut in_range: Vec<i8> = Vec::new();
 
-        if range_fp == range_sp {
-            if x.start != y.start && x.end != y.end {
-                &in_range.push(0);
-            }
-
-            else if x.start == y.start && x.end == y.end {
-                in_range.push(1)
-            }
-return in_range;
-                
-        } else if range_fp > range_sp {
-            for num in y.start..y.end+1 {
-                if (x.start..x.end).contains(&num) {
-                    in_range.push(1);
-                }
+    if range_fp == range_sp {
+        if x.start != y.start && x.end != y.end {
+            in_range.push(0);
+        } else if x.start == y.start && x.end == y.end {
+            in_range.push(1)
+        }
+        return in_range;
+    } else if range_fp > range_sp {
+        for num in y.start..y.end + 1 {
+            if (x.start..x.end + 1).contains(&num) {
+                in_range.push(1);
+            } else {
                 in_range.push(0);
             }
-        } 
-
-        // else if range_fp < range_sp {
-            for num in x.start..x.end + 1 {
-                if (y.start..y.end).contains(&num) {
-                    in_range.push(1);
-                }
+        }
+        return in_range;
+    } else if range_fp < range_sp {
+        for num in x.start..x.end + 1 {
+            if (y.start..y.end + 1).contains(&num) {
+                in_range.push(1);
+            } else {
                 in_range.push(0);
             }
-        // }
-        in_range
-
+        }
+        return in_range;
+    }
+    return in_range;
 }
 
 fn cleanup(all_pairs: String) -> i32 {
@@ -85,19 +83,92 @@ fn cleanup(all_pairs: String) -> i32 {
             end: sp.1.parse::<i32>().unwrap(),
         };
 
-let in_range = check_in_range(frst_p, scnd_p);
-println!("{:?}",  in_range);
-result +=1
+        let in_range = check_in_range(frst_p, scnd_p);
 
-
-
+        let is_in_range = !in_range.contains(&0);
+        if is_in_range == true {
+            result += 1
+        }
     }
+    // println!("{}", result);
     result
 }
 
+fn check_in_range_pt_ii(x: Pair, y: Pair) -> Vec<i8> {
+    // println!("trigger");
+    let range_fp = x.total_range();
+    let range_sp = y.total_range();
+
+    let mut in_range: Vec<i8> = Vec::new();
+
+     if range_fp == range_sp {
+
+        for num in y.start..y.end + 1 {
+            println!("{}",num);
+            if (x.start..x.end + 1).contains(&num) {
+                in_range.push(1);
+            } else {
+                in_range.push(0);
+            }
+        }
+        return in_range;
+    } 
+    
+    else if range_fp > range_sp {
+        for num in y.start..y.end + 1 {
+            if (x.start..x.end + 1).contains(&num) {
+                in_range.push(1);
+            } else {
+                in_range.push(0);
+            }
+        }
+        return in_range;
+    } else if range_fp < range_sp {
+        for num in x.start..x.end + 1 {
+            if (y.start..y.end + 1).contains(&num) {
+                in_range.push(1);
+            } else {
+                in_range.push(0);
+            }
+        }
+        return in_range;
+    }
+    return in_range;
+}
+fn cleanup_part_two(all_pairs: String) -> i32 {
+    println!("trigger");
+    let mut result = 0;
+    for pair in all_pairs.lines() {
+        let pair: (&str, &str) = pair.split_once(",").unwrap();
+        let fp: (&str, &str) = pair.0.split_once("-").unwrap();
+        let sp: (&str, &str) = pair.1.split_once("-").unwrap();
+
+        let frst_p = Pair {
+            start: fp.0.parse::<i32>().unwrap(),
+            end: fp.1.parse::<i32>().unwrap(),
+        };
+        let scnd_p = Pair {
+            start: sp.0.parse::<i32>().unwrap(),
+            end: sp.1.parse::<i32>().unwrap(),
+        };
+
+        let in_range = check_in_range_pt_ii(frst_p, scnd_p);
+        
+     println!("{:?}",in_range);
+
+        let is_in_range = in_range.contains(&1);
+
+        if is_in_range == true {
+            result += 1
+        }
+    }
+     println!("{}", result);
+    result
+}
 fn main() {
     let file = fs::read_to_string("input.txt").unwrap();
-    cleanup(file);
+    // cleanup(file);
+     cleanup_part_two(file);
 }
 
 #[cfg(test)]
@@ -107,9 +178,13 @@ mod tests {
     #[test]
     fn returns_expected() {
         assert_eq!(
-            cleanup("2-4,6-8\n2-3,4-5\n5-7,7-9\n2-8,3-7\n6-6,4-6\n2-6,4-8".to_string()),
-            2
+            cleanup_part_two("2-4,6-8\n2-3,4-5\n5-7,7-9\n2-8,3-7\n6-6,4-6\n2-6,4-8".to_string()),
+            4
         );
+        /* assert_eq!(
+            cleanup("2-4,6-8\n2-3,4-5\n5-7,7-9\n2-8,3-7\n6-6,4-6\n2-6,4-8".to_string()),
+            4
+        ); */
         // assert_eq!(rock_paper_siccors_part1("A Y\nB X\nC Z".to_string()), 15);
     }
 }
