@@ -1,8 +1,25 @@
-fn main() {
-    println!("Hello, world!");
-}
+use nom::combinator::all_consuming;
+use crate::lines::Line;
 
-#[cfg(test)]
+mod parse;
+mod lines;
+//5-96,6-99
+
+/* fn line(input: &str) -> IResult<&str, Vec<Option<&str>>> {
+    let (input, result) =
+        separated_list1(tag(" "), parse_line)(input)?;
+
+    println!(Ok(result));
+    Ok((input, result))
+} */
+
+fn main() {
+    let lines = parse::parse_input(include_str!("../input.txt"));
+        for line in lines {
+            println!("{:?}", line);
+        }
+}
+/* #[cfg(test)]
 mod tests {
 
     use super::*;
@@ -13,4 +30,4 @@ mod tests {
             4
         );
     }
-}
+} */

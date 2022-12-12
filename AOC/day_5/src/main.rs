@@ -1,3 +1,22 @@
+// parse extern crate and hole 
+// parse crate or hole
+//        alt((map(parse_crate, Some), map(parse_hole, |_| None)))(i)
+// parse full line -> separated_list1
+
+//parse number -> noms number parser
+// parse stack number
+// 
+
+// delimited + tag = take 
+// all_consuming
+// filter_map to ignore the options
+// preced tag, parse number isntruction
+
+// When we're parsing crate lines, and we don't want to move out of the iterator, since we still have more stuff to parse after, instead of doing (&mut lines)
+//Instead of popping each item from the end of the source stack, we can use drain with a range to drain only the part we need to move. Then, we can use extend on the destination stack to add everything from that iterator:
+
+
+use core::fmt;
 use std::fs;
 use nom::{combinator::map_res, bytes::complete::take_while_m_n, sequence::tuple};
 pub use nom::{
@@ -10,57 +29,33 @@ pub use nom::{
     sequence::{delimited, preceded},
     *,
 };
-#[derive(Debug,PartialEq)]
-pub struct Color {
-  pub red:     u8,
-  pub green:   u8,
-  pub blue:    u8,
-}
 
-fn from_hex(input: &str) -> Result<u8, std::num::ParseIntError> {
-  u8::from_str_radix(input, 16)
-}
 
-fn is_hex_digit(c: char) -> bool {
-  c.is_digit(16)
-}
-
-fn hex_primary(input: &str) -> IResult<&str, u8> {
-  map_res(
-    take_while_m_n(2, 2, is_hex_digit),
-    from_hex
-  )(input)
-}
-
-fn hex_color(input: &str) -> IResult<&str, Color> {
-  let (input, _) = tag("#")(input)?;
-  let (input, (red, green, blue)) = tuple((hex_primary, hex_primary, hex_primary))(input)?;
-
-  Ok((input, Color { red, green, blue }))
-}
-
+#[derive(Debug)]
+struct Crate(char);
 
 fn main() {
- match hex_color("#2F14DF") {
- Ok(sk) => { 
-     println!("{:?}",sk.1)   // ... use sk ...
-    },
-    Err(e) => {
-        println!("{:?}",e)
-        // ... sk is not available, and e explains why ...
-    },
  }
 
 
-  assert_eq!(hex_color("#2F14DF"), Ok(("", Color {
-    red: 47,
-    green: 20,
-    blue: 223,
-  })));
-    /* let file = fs::read_to_string("input.txt").unwrap();
-    // cleanup(file);
-     stack_organizer(file); */
+#[derive(Debug)]
+struct Instruction {
+    quantity: usize,
+    src: usize,
+    dst: usize,
 }
+
+struct Piles(Vec<Vec<Crate>>);
+
+impl fmt::Debug for Piles {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        for (i, pile) in self.0.iter().enumerate() {
+            writeln!(f, "Pile {}: {:?}", i, pile)?;
+        }
+        Ok(())
+    }
+}
+
 
 /* #[cfg(test)]
 mod tests {
