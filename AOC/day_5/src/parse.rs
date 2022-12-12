@@ -5,6 +5,7 @@ use nom::{
     sequence::{delimited, preceded},
     Finish, IResult,
 };
+use nom::multi::separated_list1;
 
 
 /* [H] [M] [N] [Z] [M] [C] [M] [P] [P]
@@ -39,14 +40,40 @@ fn parse_crate(input: &str) -> IResult<&str, Crate> {
 }
 // add code here
 
-// fn line(input: &str) -> IResult<&str,>
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_parse_crate() {
+        let tests = [
+            ("[M]   ", Crate('M')),
+        ];
+        for (input, expected_output) in tests {
+            let    (remaining_input, output) = parse_crate(input).unwrap();
+            println!("{:?}", output);
+            assert_eq!(output, expected_output);
+        }
+    }
+}
+
+//parse hole
+
+// parse crate or hole
+// alt function
+
+
+fn parse_crate_line(i: &str) -> IResult<&str, Vec<Option<Crate>>> {
+    separated_list1(tag(" "), parse_crate_or_hole)(i)
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_crate_line() {
         let tests = [
             ("[M]   ", Crate('M')),
         ];
