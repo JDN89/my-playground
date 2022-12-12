@@ -1,25 +1,31 @@
-fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
-    a.into_iter().filter(|x| !b.contains(x)).collect()
+fn min_max(lst: &[i32]) -> (i32, i32) {
+    (*lst.iter().min().unwrap(), *lst.iter().max().unwrap())
 }
 
 fn main() {
-    array_diff(vec![1, 2, 2], vec![1]);
+    min_max(&[1, 2, 3, 4, 5]);
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::min_max;
+
+    const ERR_MSG: &str = "\nYour result (left) did not match the expected output (right)";
+
+    fn dotest(arr: &[i32], expected: (i32, i32)) {
+        assert_eq!(min_max(arr), expected, "{ERR_MSG} with lst = {arr:?}")
+    }
+
     #[test]
-    fn returns_expected() {
-        assert_eq!(array_diff(vec![1, 2], vec![1]), vec![2]);
-        assert_eq!(array_diff(vec![1, 2, 2], vec![1]), vec![2, 2]);
-        assert_eq!(array_diff(vec![1, 2, 2], vec![2]), vec![1]);
-        assert_eq!(array_diff(vec![1, 2, 2], vec![]), vec![1, 2, 2]);
-        assert_eq!(array_diff(vec![], vec![1, 2]), vec![]);
-        assert_eq!(array_diff(vec![1, 2, 3], vec![1, 2]), vec![3]);
+    fn fixed_tests() {
+        for (arr, expected) in [
+            (vec![1, 2, 3, 4, 5], (1, 5)),
+            (vec![2334454, 5], (5, 2334454)),
+        ] {
+            dotest(&arr, expected)
+        }
     }
 }
-
 //
 //     //https://en.wikipedia.org/wiki/ASCII#Printable_characters
 //     text
