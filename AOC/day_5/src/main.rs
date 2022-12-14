@@ -16,7 +16,14 @@
 //Instead of popping each item from the end of the source stack, we can use drain with a range to drain only the part we need to move. Then, we can use extend on the destination stack to add everything from that iterator:
 
 
+use std::mem::transmute;
+use nom::combinator::all_consuming;
+use nom::Finish;
+use crate::parse::{parse_crate_line, parse_instruction};
+use crate::helpers::transpose_rev;
+
 mod parse;
+mod helpers;
 
 
 
@@ -25,11 +32,31 @@ mod parse;
 struct Crate(char);
 
 fn main() {
-    fn main() {
-        // let lines = parse::parse_input(include_str!("../input.txt"));
-        // for line in lines {
-        //     println!("{:?}", line);
-        // }
+    let mut lines = include_str!("test.txt").lines();
+
+    let crate_lines: Vec<_> = (&mut lines)
+        .map_while(|line| {
+            all_consuming(parse_crate_line)(line)
+                .finish()
+                .ok()
+                .map(|(_, line)| line)
+        })
+        .collect();
+    let crate_columns = transpose_rev(crate_lines);
+    for col in &crate_columns {
+        println!("{col:?}");
     }
- }
+
+    // we've consumed the "numbers line" but not the separating line
+    assert!(lines.next().unwrap().is_empty());
+
+    let instructions: Vec<_> = lines
+        .map(|line| all_consuming(parse_instruction)(line).finish().unwrap().1)
+        .collect();
+    for ins in &instructions {
+        println!("{ins:?}");
+    }
+}
+
+
 
