@@ -1,31 +1,39 @@
-fn min_max(lst: &[i32]) -> (i32, i32) {
-    (*lst.iter().min().unwrap(), *lst.iter().max().unwrap())
+fn count_duplicates(text: &str) -> u32 {
+    let result = text.chars().collect::<Vec<char>>();
+    // put in hashset
+    // compare lenght hashSet to length &str
+    //let unique = HashSet
+    for c in result {
+
+    println!("{:?}", c);
+    }
+    0
 }
 
 fn main() {
-    min_max(&[1, 2, 3, 4, 5]);
+    count_duplicates("abcde");
 }
 
 #[cfg(test)]
 mod tests {
-    use super::min_max;
+    use super::*;
 
-    const ERR_MSG: &str = "\nYour result (left) did not match the expected output (right)";
-
-    fn dotest(arr: &[i32], expected: (i32, i32)) {
-        assert_eq!(min_max(arr), expected, "{ERR_MSG} with lst = {arr:?}")
+    #[test]
+    fn test_abcde() {
+        assert_eq!(count_duplicates("abcde"), 0);
     }
 
     #[test]
-    fn fixed_tests() {
-        for (arr, expected) in [
-            (vec![1, 2, 3, 4, 5], (1, 5)),
-            (vec![2334454, 5], (5, 2334454)),
-        ] {
-            dotest(&arr, expected)
-        }
+    fn test_abcdea() {
+        assert_eq!(count_duplicates("abcdea"), 1);
+    }
+
+    #[test]
+    fn test_indivisibility() {
+        assert_eq!(count_duplicates("indivisibility"), 1);
     }
 }
+
 //
 //     //https://en.wikipedia.org/wiki/ASCII#Printable_characters
 //     text
