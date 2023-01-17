@@ -1,22 +1,12 @@
-fn high(input: &str) -> &str {
-    let v: Vec<&str> = input.split(" ").collect();
-    let mut vec_weight_word = Vec::new();
-
-    for w in &v {
-        let ascii_values: i32 = w.chars().map(|c| c as i32 - 96).sum();
-        vec_weight_word.push(ascii_values);
-        println!("word: {:?}", ascii_values);
-    }
-
-    let max_value = vec_weight_word.iter().max().unwrap();
-
-    let position_max_word = vec_weight_word.iter().position(|i| i == max_value).unwrap();
-    println!("{:?}", position_max_word);
-    v[position_max_word]
+fn reverse_letters(s: &str) -> String {
+    s.chars()
+        .filter(|c| c.is_ascii_alphabetic())
+        .rev()
+        .collect::<String>()
 }
 
 fn main() {
-    high("man i need a taxi up to ubud");
+    reverse_letters("man1");
 }
 
 // fn hor_mirror(s: String) -> String {
@@ -31,22 +21,23 @@ fn main() {
 // fn oper(oper: fn(String) -> String, s: String) -> String {
 //     oper(s)
 // }
-
 #[cfg(test)]
 mod tests {
-    use super::high;
+    use super::reverse_letters;
+
+    fn dotest(s: &str, expected: &str) {
+        let actual = reverse_letters(s);
+        assert!(
+            actual == expected,
+            "With s = \"{s}\"\nExpected \"{expected}\" but got \"{actual}\""
+        )
+    }
 
     #[test]
-    fn test_basic() {
-        assert_eq!(high("man i need a taxi up to ubud"), "taxi");
-        assert_eq!(high("what time are we climbing up the volcano"), "volcano");
-        assert_eq!(high("take me to semynak"), "semynak");
-        assert_eq!(high("massage yes massage yes massage"), "massage");
-        assert_eq!(high("take two bintang and a dance please"), "bintang");
-        assert_eq!(high("aa b"), "aa");
-        assert_eq!(high("b aa"), "b");
-        assert_eq!(high("bb d"), "bb");
-        assert_eq!(high("d bb"), "d");
-        assert_eq!(high("aaa b"), "aaa");
+    fn fixed_tests() {
+        dotest("krishan", "nahsirk");
+        dotest("ultr53o?n", "nortlu");
+        dotest("ab23c", "cba");
+        dotest("krish21an", "nahsirk");
     }
 }
