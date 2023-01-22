@@ -1,12 +1,69 @@
-fn reverse_letters(s: &str) -> String {
-    s.chars()
-        .filter(|c| c.is_ascii_alphabetic())
-        .rev()
-        .collect::<String>()
+fn get_good_value_by_position(pos: usize) -> i32 {
+    match pos {
+        0 => 1,
+        1 => 2,
+        2 => 3,
+        3 => 3,
+        4 => 4,
+        5 => 10,
+        _ => 0,
+    }
+}
+
+fn get_evil_value_by_position(pos: usize) -> i32 {
+    match pos {
+        0 => 1,
+        1 => 2,
+        2 => 2,
+        3 => 2,
+        4 => 3,
+        5 => 5,
+        6 => 10,
+        _ => 0,
+    }
+}
+
+fn get_forces_value(forces: &str, eval_position: fn(usize) -> i32) -> i32 {
+    forces
+        .split(" ")
+        .map(|s| s.parse::<i32>().unwrap())
+        .enumerate()
+        .map(|(i, v)| eval_position(i) * v as i32)
+        .sum()
+}
+
+fn good_vs_evil(good: &str, evil: &str) -> String {
+    let good_val = get_forces_value(good, get_good_value_by_position);
+    let evil_val = get_forces_value(evil, get_evil_value_by_position);
+
+    let result = good_val - evil_val;
+    if result < 0 {
+        String::from("Battle Result: Evil eradicates all trace of Good")
+    } else if result > 0 {
+        String::from("Battle Result: Good triumphs over Evil")
+    } else {
+        String::from("Battle Result: No victor on this battle field")
+    }
 }
 
 fn main() {
-    reverse_letters("man1");
+    good_vs_evil("1 0 0 0 0 0", "0 0 0 0 1 0 0");
+}
+
+#[test]
+fn returns_expected() {
+    assert_eq!(
+        good_vs_evil("0 0 0 0 0 10", "0 0 0 0 0 0 0"),
+        "Battle Result: Good triumphs over Evil"
+    );
+    assert_eq!(
+        good_vs_evil("0 0 0 0 0 0", "0 0 0 0 0 0 10"),
+        "Battle Result: Evil eradicates all trace of Good"
+    );
+    assert_eq!(
+        good_vs_evil("0 0 0 0 0 10", "0 0 0 0 0 0 10"),
+        "Battle Result: No victor on this battle field"
+    );
 }
 
 // fn hor_mirror(s: String) -> String {
@@ -21,23 +78,3 @@ fn main() {
 // fn oper(oper: fn(String) -> String, s: String) -> String {
 //     oper(s)
 // }
-#[cfg(test)]
-mod tests {
-    use super::reverse_letters;
-
-    fn dotest(s: &str, expected: &str) {
-        let actual = reverse_letters(s);
-        assert!(
-            actual == expected,
-            "With s = \"{s}\"\nExpected \"{expected}\" but got \"{actual}\""
-        )
-    }
-
-    #[test]
-    fn fixed_tests() {
-        dotest("krishan", "nahsirk");
-        dotest("ultr53o?n", "nortlu");
-        dotest("ab23c", "cba");
-        dotest("krish21an", "nahsirk");
-    }
-}
