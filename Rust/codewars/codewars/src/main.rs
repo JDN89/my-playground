@@ -1,11 +1,4 @@
-fn sum_cubes(n: u32) -> u32 {
-    //(1..=n) is an iterator from 1 until n
-    (1..=n).map(|n| n.pow(3)).sum()
-}
-
-fn main() {
-    sum_cubes(3);
-}
+fn main() {}
 
 #[cfg(test)]
 mod tests {
@@ -32,6 +25,11 @@ mod tests {
 // }
 // fn oper(oper: fn(String) -> String, s: String) -> String {
 //     oper(s)
+// }
+
+// fn sum_cubes(n: u32) -> u32 {
+//     //(1..=n) is an iterator from 1 until n
+//     (1..=n).map(|n| n.pow(3)).sum()
 // }
 
 // fn get_good_value_by_position(pos: usize) -> i32 {
