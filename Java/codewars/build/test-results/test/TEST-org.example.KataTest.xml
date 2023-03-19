@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.KataTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-22T17:11:47" hostname="jan-b550aoruselitev2" time="0.008">
-  <properties/>
-  <testcase name="exampleTests()" classname="org.example.KataTest" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
