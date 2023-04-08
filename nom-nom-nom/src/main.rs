@@ -1,4 +1,10 @@
+// look at nom and which libaries to use to do the challange
+// parse the crates CHAR
+// put them in vectors
+// flip the vectors
+// parse the commands with TAG
 mod parser; 
+mod nom_test;
 
 fn main() {
 
