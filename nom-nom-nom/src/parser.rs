@@ -1,8 +1,9 @@
 
 
 pub mod parser {
-   pub fn parse () {
-      println!("Hellow you");
+   pub fn parse ( input:&String) {
+      println!("{input}");
+      
    }
 }
 

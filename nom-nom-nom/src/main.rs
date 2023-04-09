@@ -11,7 +11,7 @@ fn main() {
    let input =  read_input().unwrap();
    println!("{input}");
    
-   parser::parser::parse()
+   parser::parser::parse(&input);
 }
 
 fn read_input() -> Result<String,std::io::Error> {
