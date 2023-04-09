@@ -1,9 +1,12 @@
+use nom::branch::alt;
 use nom::bytes::complete::{tag, take};
 use nom::combinator::map;
+use nom::error::VerboseErrorKind::Nom;
 use nom::IResult;
+use nom::multi::separated_list1;
 use nom::sequence::delimited;
 
-#[derive(Debug,PartialEq)]
+#[derive(Debug, PartialEq)]
 pub struct Crate(char);
 
 pub fn parse_crate(input: &str) -> IResult<&str, Crate> {
@@ -14,17 +17,27 @@ pub fn parse_crate(input: &str) -> IResult<&str, Crate> {
     map(parser, first_char_closure)(input)
 }
 
-pub fn parse_hole(input: &str) -> IResult<&str,()> {
-map(tag("   "),drop )(input)
+pub fn parse_hole(input: &str) -> IResult<&str, ()> {
+    map(tag("   "), drop)(input)
+}
+
+// map crate parser to some and map hole parser to none
+
+fn parse_crate_or_hole(i: &str) -> IResult<&str, Option<Crate>> {
+    // delimited(parse_hole(i),parse_crate(i),parse_hole(i)) (i)
+    alt((map(parse_crate, Some), map(parse_hole, |_| None)))(i)
+}
+
+fn line(i: &str) -> IResult<&str, Vec<Option<Crate>>> {
+
+    let (input, result) = separated_list1(tag(" "), parse_crate_or_hole)(i)?;
+
+
+    Ok((input, result))
 }
 
 
-// fn parse_crate_or_hole() {
-//     delimited()
-// }
-
 pub mod parser {
-
     pub fn parse(input: &String) {
         // for line in input.lines() {
         //     let parsed_line = parse_crates(line).expect("parse crate lines");
@@ -37,17 +50,26 @@ pub mod parser {
 #[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
     fn test_parse_crate() {
         let input = "[A]";
         let result = parse_crate(input);
         assert_eq!(result, Ok(("", Crate('A'))));
     }
+
     #[test]
     fn test_parse_hole() {
         let input = "   ";
         let result = parse_hole(input);
-        assert_eq!(result,Ok(("",())));
+        assert_eq!(result, Ok(("", ())));
+    }
+
+    #[test]
+    fn test_parse_crate_or_hole_crate() {
+        let input = "[B]  rest  ";
+        let result = parse_crate_or_hole(input);
+        assert_eq!(result, Ok(("", Some(Crate('B')))));
     }
 
     // parse crate alternate between crate and hole
