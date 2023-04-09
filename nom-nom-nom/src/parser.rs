@@ -28,6 +28,7 @@ fn parse_crate_or_hole(i: &str) -> IResult<&str, Option<Crate>> {
     alt((map(parse_crate, Some), map(parse_hole, |_| None)))(i)
 }
 
+//we alternate between holes and crates -> there is an empty space - tag(" ") - on which we can alternate
 fn line(i: &str) -> IResult<&str, Vec<Option<Crate>>> {
 
     let (input, result) = separated_list1(tag(" "), parse_crate_or_hole)(i)?;
@@ -65,13 +66,20 @@ mod tests {
         assert_eq!(result, Ok(("", ())));
     }
 
+    //TODO:fix test?
     #[test]
     fn test_parse_crate_or_hole_crate() {
-        let input = "[B]  rest  ";
+        let input = "[D]";
         let result = parse_crate_or_hole(input);
-        assert_eq!(result, Ok(("", Some(Crate('B')))));
+        assert_eq!(result, Ok(("", Some(Crate('D')))));
     }
 
+    #[test]
+    fn test_parse_crate_or_hole_hole() {
+        let input = "   ";
+        let result = parse_crate_or_hole(input);
+        assert_eq!(result, Ok(("", None)));
+    }
     // parse crate alternate between crate and hole
 
     // #[test]
