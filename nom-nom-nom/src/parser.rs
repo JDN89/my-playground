@@ -7,11 +7,21 @@ use nom::sequence::delimited;
 pub struct Crate(char);
 
 pub fn parse_crate(input: &str) -> IResult<&str, Crate> {
+    //unwrap because the parser closure return an IResult and crate takes a char
     let first_char_closure = |s: &str| Crate(s.chars().next().unwrap());
-    let crate_parser_function = delimited(tag("["), take(1_usize), tag("]"));
-    map(crate_parser_function, first_char_closure)(input)
+    let parser = delimited(tag("["), take(1_usize), tag("]"));
+// map -> aplly the second argument (function or closure) to the output of the parser (first arg)
+    map(parser, first_char_closure)(input)
 }
 
+pub fn parse_hole(input: &str) -> IResult<&str,()> {
+map(tag("   "),drop )(input)
+}
+
+
+// fn parse_crate_or_hole() {
+//     delimited()
+// }
 
 pub mod parser {
 
@@ -33,6 +43,14 @@ mod tests {
         let result = parse_crate(input);
         assert_eq!(result, Ok(("", Crate('A'))));
     }
+    #[test]
+    fn test_parse_hole() {
+        let input = "   ";
+        let result = parse_hole(input);
+        assert_eq!(result,Ok(("",())));
+    }
+
+    // parse crate alternate between crate and hole
 
     // #[test]
     // fn test_parse_crates() {
