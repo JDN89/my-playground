@@ -29,22 +29,46 @@ fn parse_crate_or_hole(i: &str) -> IResult<&str, Option<Crate>> {
 }
 
 //we alternate between holes and crates -> there is an empty space - tag(" ") - on which we can alternate
-fn line(i: &str) -> IResult<&str, Vec<Option<Crate>>> {
-
+fn parse_crates(i: &str) -> IResult<&str, Vec<Option<Crate>>> {
     let (input, result) = separated_list1(tag(" "), parse_crate_or_hole)(i)?;
-
-
+    println!("{:?}",result);
     Ok((input, result))
 }
 
+// renamed to 👇 better indicate functionality
+pub fn transpose_rev<T>(v: Vec<Vec<Option<T>>>) -> Vec<Vec<T>> {
+    assert!(!v.is_empty());
+    let len = v[0].len();
+    let mut iters: Vec<_> = v.into_iter().map(|n| n.into_iter()).collect();
+    (0..len)
+        .map(|_| {
+            iters
+                .iter_mut()
+                // 👇
+                .rev()
+                .filter_map(|n| n.next().unwrap())
+                .collect::<Vec<T>>()
+        })
+        .collect()
+}
 
 pub mod parser {
+    use nom::combinator::all_consuming;
+    use nom::Finish;
+    use crate::parser::{parse_crates, transpose_rev};
+
     pub fn parse(input: &String) {
-        // for line in input.lines() {
-        //     let parsed_line = parse_crates(line).expect("parse crate lines");
-        //     println!("{:?}", parsed_line);
-        // }
-        println!("{input}");
+        let mut crate_lines = vec![];
+        for line in input.lines() {
+                if let Ok((_rest, crate_line))=all_consuming(parse_crates)(line).finish() {
+                crate_lines.push(crate_line);
+            };
+        }
+        let crate_columns = transpose_rev(crate_lines);
+        for col in &crate_columns {
+            println!("{col:?}");
+        }
+
     }
 }
 
@@ -79,6 +103,13 @@ mod tests {
         let input = "   ";
         let result = parse_crate_or_hole(input);
         assert_eq!(result, Ok(("", None)));
+    }
+
+    #[test]
+    fn test_parse_crates() {
+        let input = "[N] [C]    ";
+        let result = parse_crates(input);
+        assert_eq!(result,)
     }
     // parse crate alternate between crate and hole
 
