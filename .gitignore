@@ -1,22 +1,46 @@
-# Rust generated files
-**/target/
+# JavaScript
 
-# Rust executables
-**/Cargo.lock
-**/Cargo.toml.orig
-**/.cargo/
+# Dependencies
+/node_modules
 
-# Rust tools
-/.rustc_info.json
-/.racer
-/.rls
-/rustfmt.toml
-/.clippy.toml
-/.cargo-ok
+# Environment variables
+.env
 
-# Rust IDEs
-/.vscode/
-/.idea/
+# Compiled output
+/build
+/dist
 
-# Rust documentation
-**/doc/*
+# Logs and debugging output
+/logs
+/debug.log
+/coverage
+
+# IDE-specific files
+.vscode
+.idea
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+
+# Rust
+
+# Compiled output
+/target
+Cargo.lock
+
+# Logs and debugging output
+/*.log
+/!Cargo.toml
+
+# Crate metadata
+/.cargo
+
+# IDE-specific files
+/.vscode
+.idea
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
