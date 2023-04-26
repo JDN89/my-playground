@@ -1,0 +1,22 @@
+# Rust generated files
+**/target/
+
+# Rust executables
+**/Cargo.lock
+**/Cargo.toml.orig
+**/.cargo/
+
+# Rust tools
+/.rustc_info.json
+/.racer
+/.rls
+/rustfmt.toml
+/.clippy.toml
+/.cargo-ok
+
+# Rust IDEs
+/.vscode/
+/.idea/
+
+# Rust documentation
+**/doc/*
