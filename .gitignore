@@ -1,46 +1,107 @@
-# JavaScript
-
-# Dependencies
-/node_modules
-
-# Environment variables
-.env
-
-# Compiled output
-/build
-/dist
-
-# Logs and debugging output
-/logs
-/debug.log
-/coverage
-
-# IDE-specific files
-.vscode
-.idea
-
-# Miscellaneous
+# =========================
+# General
+# =========================
 .DS_Store
 Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+.vscode/
+.idea/
 
+# =========================
+# Lua
+# =========================
+*.luac
+*.out
 
+# Lua package managers
+.luarocks/
+lua_modules/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# Type checkers
+.mypy_cache/
+.pyre/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =========================
+# JavaScript / Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+.svelte-kit/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.parcel-cache/
+
+# =========================
 # Rust
-
-# Compiled output
-/target
+# =========================
+target/
 Cargo.lock
 
-# Logs and debugging output
-/*.log
-/!Cargo.toml
+# Uncomment the next line if you're building an application (not a library)
+#! Cargo.lock
 
-# Crate metadata
-/.cargo
+# =========================
+# Go
+# =========================
+bin/
+pkg/
+*.test
 
-# IDE-specific files
-/.vscode
-.idea
+# Go modules
+vendor/
 
-# Miscellaneous
-.DS_Store
-Thumbs.db
+# Coverage
+coverage.out
+
+# =========================
+# Misc
+# =========================
+*.bak
+*.orig
+*.rej
