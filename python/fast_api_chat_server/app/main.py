@@ -1,9 +1,24 @@
-from queue import Full
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from pydantic import BaseModel
+from sqlmodel import SQLModel
 
-app = FastAPI()
+from app.db import engine
+
+
+def create_db():
+    SQLModel.metadata.create_all(engine)
+
+
+# lifespan docs
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    create_db()
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 class FullName(BaseModel):

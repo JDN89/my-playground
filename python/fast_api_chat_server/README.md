@@ -3,8 +3,11 @@
 Het is de eerste keer dat ik met FastsApi werk. Je kan al veel met AI doen en uitvoeren, maar voor mij is de beste manier om iets (een framework) er iets mee te maken zonder hulp van AI.
 Ik ben wel van plan, eens ik deze kleine app geschreven heb, om mijn werk te laten reviewn door AI en zo te zien waar ik nog kon verbeteren.
 
-## Chat app
+## DEV
 
+uv run uvicorn app.main:app --reload
+
+# Chat app 
 
 ## DB model
 

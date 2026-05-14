@@ -1,0 +1,14 @@
+[project]
+name = "fast-api-chat-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.136.1",
+    "psycopg>=3.3.4",
+    "ruff>=0.15.13",
+    "sqlmodel[postgresql]>=0.0.38",
+    "ty>=0.0.35",
+    "uvicorn>=0.47.0",
+]
