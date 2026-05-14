@@ -11,7 +11,7 @@ def create_db():
     SQLModel.metadata.create_all(engine)
 
 
-# lifespan docs
+# lifespan docs: https://fastapi.tiangolo.com/advanced/events/
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db()
